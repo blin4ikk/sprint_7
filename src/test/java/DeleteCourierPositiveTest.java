@@ -46,7 +46,7 @@ public class DeleteCourierPositiveTest {
         System.out.println("Курьер успешно удален с Id: " + userId);
     }
 
-    @Step("Создание курьера с логином: {login}, паролем: {password}, именем: {firstName}")
+    @Step("Создание курьера")
     private Response createCourier(Courier courier) {
         return given()
                 .header("Content-Type", "application/json")

@@ -50,7 +50,7 @@ public class LoginPositiveTest {
         }
     }
 
-    @Step("Создание курьера: {courier}")
+    @Step("Создание курьера")
     private Response createCourier(Courier courier) {
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -64,7 +64,7 @@ public class LoginPositiveTest {
         return response;
     }
 
-    @Step("Логин курьера: {loginCourier}")
+    @Step("Логин курьера с логином: {loginCourier}")
     private void loginCourier(LoginCourier loginCourier) {
         // Выполняем логин
         Response response = given()

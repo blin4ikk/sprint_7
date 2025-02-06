@@ -90,7 +90,7 @@ public class CreateOrderTest {
         System.out.println("Заказ создан: " + trackNumber + ", дата доставки: " + deliveryDate);
     }
 
-    @Step("Отправка запроса на создание заказа: {order}")
+    @Step("Отправка запроса на создание заказа")
     private Response createOrder(Order order) {
         return given()
                 .header("Content-Type", "application/json")

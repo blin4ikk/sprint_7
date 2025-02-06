@@ -23,6 +23,8 @@
                 <version>2.11.2</version>
                 <configuration>
                     <reportVersion>2.15.0</reportVersion>
+                    <reportDirectory>${project.basedir}/target/allure-report</reportDirectory>
+                    <resultsDirectory>${project.basedir}/target/allure-results</resultsDirectory>
                 </configuration>
             </plugin>
 
@@ -46,7 +48,7 @@
                             <property>
                                 <!-- папка, в которую будут генерироваться отчёты Allure -->
                                 <name>allure.results.directory</name>
-                                <value>${project.build.directory}/allure-results</value>
+                                <value>${project.basedir}/target/allure-results</value>
                             </property>
                         </systemProperties>
                     </configuration>

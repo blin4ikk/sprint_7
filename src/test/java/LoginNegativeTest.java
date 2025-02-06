@@ -63,7 +63,7 @@ public class LoginNegativeTest {
         deleteCourier(userId); // Удаление курьера
     }
 
-    @Step("Создание курьера с логином: {login}, паролем: {password}, именем: {firstName}")
+    @Step("Создание курьера")
     private void createCourier(String login, String password, String firstName) {
         Courier courier = new Courier(login, password, firstName);
         Response response = given()

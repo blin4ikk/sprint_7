@@ -50,7 +50,7 @@ public class CreateCouriersPositiveTest {
         System.out.println("Курьер удален: ID " + userId);
     }
 
-    @Step("Создание курьера с логином: {login}, паролем: {password}, именем: {firstName}")
+    @Step("Создание курьера")
     private Response createCourier(Courier courier) {
         return given()
                 .header("Content-Type", "application/json")
