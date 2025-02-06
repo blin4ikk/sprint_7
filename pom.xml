@@ -11,6 +11,8 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <aspectj.version>1.9.7</aspectj.version>
+        <allure.version>2.15.0</allure.version>
     </properties>
 
     <build>
@@ -19,8 +21,43 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.11.2</version>
+                <configuration>
+                    <reportVersion>2.15.0</reportVersion>
+                </configuration>
             </plugin>
 
+                <plugin>
+                    <!-- настройка плагина maven-surefire-plugin -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                    <configuration>
+                        <testFailureIgnore>false</testFailureIgnore>
+                        <argLine>
+                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        </argLine>
+                        <properties>
+                            <property>
+                                <name>listener</name>
+                                <value>io.qameta.allure.junit4.AllureJunit4</value>
+                            </property>
+                        </properties>
+                        <systemProperties>
+                            <property>
+                                <!-- папка, в которую будут генерироваться отчёты Allure -->
+                                <name>allure.results.directory</name>
+                                <value>${project.build.directory}/allure-results</value>
+                            </property>
+                        </systemProperties>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjweaver</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -30,18 +67,26 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-        <!-- Библиотека Allure для JUnit 4 -->
+
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
-            <version>2.23.0</version> <!-- Укажите последнюю версию -->
+            <version>2.23.0</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.9</version>
+            <version>2.10.1</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -51,20 +96,17 @@
         </dependency>
 
         <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.23.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
             <version>4.11.0</version>
             <scope>test</scope>
         </dependency>
-
-
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>1.12.20</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
 </project>
