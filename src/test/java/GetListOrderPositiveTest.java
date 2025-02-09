@@ -17,7 +17,6 @@ public class GetListOrderPositiveTest {
 
     @Test
     @DisplayName("Запрос списка заказов без параметров")
-    @Issue("Сервис не работает")
     public void getOrders() {
         // Выполняем GET-запрос без параметров
         Response response = getOrdersRequest();
@@ -42,7 +41,6 @@ public class GetListOrderPositiveTest {
 
     @Test
     @DisplayName("Запрос списка заказов с stationNumber")
-    @Issue("Сервис не работает")
     public void getOrdersWithNearestStation() {
         int stationNumber = new Random().nextInt(271) + 1; // Пример номера станции метро
         // Выполняем GET-запрос с фильтром по nearestStation
@@ -55,7 +53,6 @@ public class GetListOrderPositiveTest {
 
     @Test
     @DisplayName("Запрос списка заказов с limit и page")
-    @Issue("Сервис не работает")
     public void getOrdersWithLimitAndPage() {
         int limit = new Random().nextInt(30) + 1;
         int page = 0; // Страница = 0 (по умолчанию)
