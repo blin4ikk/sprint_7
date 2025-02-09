@@ -10,8 +10,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class GetListOrderNegativeTest {
-    private final Gson gson = new Gson();
-
     @Before
     public void setup() {
         RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";

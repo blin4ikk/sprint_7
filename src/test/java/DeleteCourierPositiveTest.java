@@ -35,6 +35,7 @@ public class DeleteCourierPositiveTest {
 
         // Создаем курьера
         Response createResponse = createCourier(courier);
+        createResponse.then().statusCode(201).body("ok", equalTo(true));
 
         // Логинимся для получения userId
         LoginCourier loginCourier = new LoginCourier(login, password);

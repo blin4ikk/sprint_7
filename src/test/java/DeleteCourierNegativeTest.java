@@ -30,7 +30,7 @@ public class DeleteCourierNegativeTest {
 
         // Создание курьера
         Courier courier = new Courier(login, password, firstName);
-        Response createResponse = createCourier(courier);
+        createCourier(courier);
 
         // Логин для получения ID
         LoginCourier loginCourier = new LoginCourier(login, password);
